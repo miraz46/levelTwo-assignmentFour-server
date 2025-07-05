@@ -11,7 +11,7 @@ const app: Application = express();
 app.use(express.json());
 app.use(
     cors({
-        origin: ['http://localhost:5173', 'https://library-management-system-frontend-gold.vercel.app'],
+        origin: [ 'https://library-management-system-frontend-gold.vercel.app'],
         credentials: true,
     })
 );
