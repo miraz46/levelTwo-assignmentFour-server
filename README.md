@@ -1,4 +1,4 @@
-# Library Management System API
+# 📘 Minimal Library Management System – Backend
 
 **About** : Library Management System API is a RESTful backend service built with Node.js, Express, TypeScript, and MongoDB. It allows users to manage books and borrow operations, including CRUD operations for books, borrowing books with availability control, and viewing aggregated borrow summaries.
 
