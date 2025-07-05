@@ -20,7 +20,10 @@ const borrowBook_model_1 = __importDefault(require("./models/borrowBook.model"))
 const cors_1 = __importDefault(require("cors"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
-app.use((0, cors_1.default)());
+app.use((0, cors_1.default)({
+    origin: ['http://localhost:5173', 'https://library-management-system-frontend-gold.vercel.app'],
+    credentials: true,
+}));
 app.use("/books", books_controller_1.bookRoutes);
 const createBookZodSchema = zod_1.z.object({
     title: zod_1.z.string(),
