@@ -123,10 +123,8 @@ app.get('/borrow-summary', async (req, res) => {
             {
                 $project: {
                     _id: 0,
-                    book: {
-                        title: "$bookInfo.title",
-                        isbn: "$bookInfo.isbn"
-                    },
+                    title: "$bookInfo.title",
+                    isbn: "$bookInfo.isbn",
                     totalQuantity: 1
                 }
             }

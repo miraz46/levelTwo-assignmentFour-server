@@ -15,36 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.bookRoutes = void 0;
 const express_1 = __importDefault(require("express"));
 const book_model_1 = __importDefault(require("../models/book.model"));
-const zod_1 = require("zod");
 exports.bookRoutes = express_1.default.Router();
-const createBookZodSchema = zod_1.z.object({
-    title: zod_1.z.string(),
-    author: zod_1.z.string(),
-    genre: zod_1.z.string(),
-    isbn: zod_1.z.string(),
-    description: zod_1.z.string().optional(),
-    copies: zod_1.z.number(),
-    available: zod_1.z.boolean()
-});
-// Create New Books
-exports.bookRoutes.post('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const body = yield createBookZodSchema.parseAsync(req.body);
-        const bookCreated = yield book_model_1.default.create(body);
-        res.status(201).json({
-            success: true,
-            message: "Book created successfully",
-            data: bookCreated
-        });
-    }
-    catch (error) {
-        res.status(400).json({
-            success: false,
-            message: error.message,
-            error
-        });
-    }
-}));
 // Get All Books
 exports.bookRoutes.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const query = req.query;
@@ -73,17 +44,6 @@ exports.bookRoutes.get('/:bookId', (req, res) => __awaiter(void 0, void 0, void 
     res.status(200).json({
         success: true,
         message: "Book fetched successfully",
-        data: book
-    });
-}));
-// Update Single Book
-exports.bookRoutes.patch('/:bookId', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const bookId = req.params.bookId;
-    const updatedBook = req.body;
-    const book = yield book_model_1.default.findByIdAndUpdate(bookId, updatedBook, { new: true });
-    res.status(200).json({
-        success: true,
-        message: "Book updated successfully",
         data: book
     });
 }));

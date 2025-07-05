@@ -24,7 +24,7 @@ const bookSchema = new mongoose_1.Schema({
     genre: {
         type: String,
         required: true,
-        enum: ["FICTION", "NON_FICTION", "SCIENCE", "HISTORY", "BIOGRAPHY", "FANTASY"],
+        trim: true
     },
     isbn: {
         type: String,
